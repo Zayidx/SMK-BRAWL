@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://csxdlqk5staco"]
+
+[ext_resource type="PackedScene" uid="uid://bwhtmk73pbhs7" path="res://scenes/player.tscn" id="1_dgg7t"]
+[ext_resource type="Texture2D" uid="uid://do52kfvwdussb" path="res://Gambar WhatsApp 2024-02-01 pukul 12.45.48_b98f802d.jpg" id="2_5oxxb"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_1oc2m"]
+size = Vector2(1000, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_38d11"]
+size = Vector2(2564, 48)
+
+[node name="MAIN" type="Node2D"]
+
+[node name="BARRIER" type="Node" parent="."]
+
+[node name="Platform3" type="StaticBody2D" parent="BARRIER"]
+position = Vector2(1840, 208)
+rotation = 1.5708
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="BARRIER/Platform3"]
+visible = false
+position = Vector2(1413, 423)
+scale = Vector2(1.535, 0.26)
+mesh = SubResource("QuadMesh_1oc2m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BARRIER/Platform3"]
+position = Vector2(-143.997, 723)
+shape = SubResource("RectangleShape2D_38d11")
+debug_color = Color(0, 0.392157, 0.458824, 0)
+
+[node name="Platform2" type="StaticBody2D" parent="BARRIER"]
+position = Vector2(72, 448)
+rotation = 1.5708
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="BARRIER/Platform2"]
+visible = false
+position = Vector2(1413, 423)
+scale = Vector2(1.535, 0.26)
+mesh = SubResource("QuadMesh_1oc2m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BARRIER/Platform2"]
+position = Vector2(-255, 85.0009)
+shape = SubResource("RectangleShape2D_38d11")
+debug_color = Color(0, 0.392157, 0.458824, 0)
+
+[node name="Platform" type="StaticBody2D" parent="BARRIER"]
+position = Vector2(576, 520)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="BARRIER/Platform"]
+visible = false
+position = Vector2(1413, 423)
+scale = Vector2(1.535, 0.26)
+mesh = SubResource("QuadMesh_1oc2m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BARRIER/Platform"]
+position = Vector2(-48, 97)
+shape = SubResource("RectangleShape2D_38d11")
+debug_color = Color(0, 0.392157, 0.458824, 0)
+
+[node name="GambarWhatsApp2024-02-01Pukul12_45_48B98f802d" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(574, 309)
+scale = Vector2(0.901562, 1.01563)
+texture = ExtResource("2_5oxxb")
+
+[node name="Player" parent="." instance=ExtResource("1_dgg7t")]
+top_level = true
+position = Vector2(64, 301)

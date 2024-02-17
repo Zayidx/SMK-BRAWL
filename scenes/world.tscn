@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c16f3f6721qcn"]
+
+[ext_resource type="Texture2D" uid="uid://do52kfvwdussb" path="res://Gambar WhatsApp 2024-02-01 pukul 12.45.48_b98f802d.jpg" id="2_6map1"]
+[ext_resource type="PackedScene" uid="uid://c0la8vkjgqsre" path="res://scenes/menu.tscn" id="2_wo3vw"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4q5o6"]
+
+[node name="World" type="Node2D"]
+
+[node name="Menu" parent="." instance=ExtResource("2_wo3vw")]
+offset_left = 126.0
+offset_top = 177.0
+offset_right = 126.0
+offset_bottom = 177.0
+scale = Vector2(3, 3)
+
+[node name="GambarWhatsApp2024-02-01Pukul12_45_48B98f802d2" type="Sprite2D" parent="."]
+modulate = Color(0.352941, 0.34902, 0.27451, 1)
+show_behind_parent = true
+material = SubResource("CanvasItemMaterial_4q5o6")
+position = Vector2(573, 316)
+scale = Vector2(0.901562, 1.01562)
+texture = ExtResource("2_6map1")
