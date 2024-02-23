@@ -21,7 +21,6 @@ func _physics_process(_delta):
 		anim.flip_h = true
 		velocity.x = -speed
 	elif Input.is_action_pressed("move_right") && !is_attacking():
-
 		anim.play("Run")
 		velocity.x = speed
 		anim.flip_h = false
