@@ -28,6 +28,7 @@ enum states{
 var current_state = states.Wander
 
 func _ready():
+	anim.play("attack")
 	player = get_tree().get_first_node_in_group("player")
 	chase_timer.timeout.connect(on_timer_timeout)
 
