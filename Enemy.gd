@@ -1,7 +1,7 @@
 extends CharacterBody2D
 @export var gravity = 30
 @export var hp = 100
-
+var attack = true
 @onready var wall_raycast_left = $Wall_Checks/Wall_Raycast_Left as RayCast2D
 @onready var wall_raycast_right = $Wall_Checks/Wall_Raycast_Right as RayCast2D
 @onready var floor_raycast_left = $Floor_Checks/Floor_Raycast_Left as RayCast2D
@@ -63,12 +63,18 @@ func handle_movement() -> void:
 		if player_found == true:
 			if direction.x < 0:
 				current_speed = chase_speed
-				anim.play("walk")
 				anim.flip_h = false
+				if is_attacking() == false:
+					anim.play("walk")
+				
 			else:
 				current_speed = -chase_speed
-				anim.play("walk")
+				
+				
 				anim.flip_h = true
+				
+				if is_attacking() == false:
+					anim.play("walk")
 
 
 	velocity.x = current_speed
@@ -76,6 +82,9 @@ func handle_movement() -> void:
 func track_player():
 	if player == null:
 		return
+		
+	if global_position.distance_to(player.global_position) < 78 :
+		anim.play("attack")
 		
 	var direction_to_player : Vector2 = Vector2(player.position.x, player.position.y - 8)\
 	- player_tracker_raycast.position
@@ -104,22 +113,21 @@ func on_timer_timeout() -> void:
 		current_state = states.Wander
 
 func _on_enemyarea_body_entered(body):
-	if body.is_in_group("player"):
+	if body.name == "player":
 		body.take_damage(10)
-	if body.is_in_group == "player":
 		anim.play("attack")
-
-
-
-
-func _on_attack_delay_timeout():
-	$Timer.start()
-	$Enemyarea/CollisionShape2D.disabled = false
-
-
-func _on_timer_timeout():
-	$Enemyarea/CollisionShape2D.disabled = true
-
+		
+func _on_enemyarea_body_exited(body):
+	if body.name == "player":
+		attack = false
+		
+func is_attacking():
+	if anim.animation == "attack" && anim.frame > 2:
+		return false
+	else:
+		return true
+		print("true")
+		
 func update_health():
 	var healthbar = $healthbar
 	

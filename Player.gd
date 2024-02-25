@@ -57,7 +57,7 @@ func _on_area_2d_body_entered(body):
 
 
 func is_attacking():
-	if anim.animation == "attack" && anim.frame < 1:
+	if anim.animation == "attack" && anim.frame < 4:
 		return true
 	else: 
 		return false

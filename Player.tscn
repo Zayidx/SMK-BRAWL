@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://d14qiimaxax6x"]
+[gd_scene load_steps=26 format=3 uid="uid://d14qiimaxax6x"]
 
 [ext_resource type="Texture2D" uid="uid://c30m7uyr1abl5" path="res://asset/pixil-frame-0 (4).png" id="1"]
 [ext_resource type="Texture2D" uid="uid://dqeaw5bo6xley" path="res://asset/pixil-frame-0 (2).png" id="2"]
@@ -33,6 +33,18 @@ region = Rect2(162, 0, 81, 67)
 [sub_resource type="AtlasTexture" id="18"]
 atlas = ExtResource("5")
 region = Rect2(243, 0, 81, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ts2sl"]
+atlas = ExtResource("5")
+region = Rect2(243, 0, 81, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bajn"]
+atlas = ExtResource("5")
+region = Rect2(324, 0, 81, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4yvx"]
+atlas = ExtResource("5")
+region = Rect2(81, 0, 81, 67)
 
 [sub_resource type="AtlasTexture" id="6"]
 atlas = ExtResource("1")
@@ -90,6 +102,15 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("18")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_ts2sl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bajn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f4yvx")
 }],
 "loop": true,
 "name": &"attack",
@@ -145,8 +166,7 @@ script = ExtResource("3")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("9")
-animation = &"Run"
-frame_progress = 0.563921
+animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
 position = Vector2(3.5, 11)

@@ -6,10 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://cvlum23y6lu76" path="res://asset/rev1.png" id="3_egys3"]
 
 [sub_resource type="RectangleShape2D" id="2"]
-size = Vector2(64, 116)
+size = Vector2(64, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nm61g"]
-size = Vector2(255, 220)
+size = Vector2(343, 220)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v5nl4"]
 atlas = ExtResource("2_5gmkn")
@@ -106,7 +106,6 @@ script = ExtResource("2")
 [node name="Sprite_2d" type="Sprite2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -26)
 shape = SubResource("2")
 one_way_collision = true
 
@@ -114,8 +113,9 @@ one_way_collision = true
 position = Vector2(16, 117)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemyarea"]
-position = Vector2(-6.5, -130)
+position = Vector2(-14, -130)
 shape = SubResource("RectangleShape2D_nm61g")
+disabled = true
 
 [node name="Wall_Checks" type="Node2D" parent="."]
 
@@ -161,10 +161,12 @@ one_shot = true
 [node name="Timer" type="Timer" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(7, -66)
+position = Vector2(17, -67)
 scale = Vector2(2.21233, 2.93284)
 sprite_frames = SubResource("SpriteFrames_escbe")
 animation = &"attack"
+frame = 4
+frame_progress = 1.0
 
 [node name="healthbar" type="ProgressBar" parent="."]
 modulate = Color(0.545098, 0, 0, 1)
