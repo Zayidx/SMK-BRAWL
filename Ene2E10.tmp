@@ -102,6 +102,10 @@ animations = [{
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 position = Vector2(202, 145)
 script = ExtResource("2")
+gravity = null
+hp = null
+wander_speed = null
+chase_speed = null
 
 [node name="Sprite_2d" type="Sprite2D" parent="."]
 

@@ -2,8 +2,6 @@ extends CharacterBody2D
 @export var gravity = 30
 @export var hp = 100
 
-@onready var anim = $AnimatedSprite2D
-
 @onready var wall_raycast_left = $Wall_Checks/Wall_Raycast_Left as RayCast2D
 @onready var wall_raycast_right = $Wall_Checks/Wall_Raycast_Right as RayCast2D
 @onready var floor_raycast_left = $Floor_Checks/Floor_Raycast_Left as RayCast2D
@@ -13,10 +11,10 @@ extends CharacterBody2D
 @onready var Sprite_2d = $Sprite_2d as Sprite2D
 @onready var chase_timer = $Chase_Timer as Timer
 
+@onready var anim = $AnimatedSprite2D
 
 @export var wander_speed : float = 40.0
 @export var chase_speed : float = 80.0
-
 
 var current_speed : float  = 0.0
 var player_found : bool = false 
@@ -34,7 +32,6 @@ func _ready():
 	chase_timer.timeout.connect(on_timer_timeout)
 
 func _physics_process(_delta):
-	update_health()
 	handle_vision()
 	track_player()
 	handle_movement()
@@ -47,10 +44,9 @@ func _physics_process(_delta):
 		velocity.y += gravity
 		if velocity.y > 1500:
 			velocity.y = 500
-		
+	
 func handle_movement() -> void:
 	var direction = global_position - player.global_position
-	
 	
 	if current_state == states.Wander:
 		if floor_raycast_right.is_colliding() != true: 
@@ -72,6 +68,7 @@ func handle_movement() -> void:
 				current_speed = -chase_speed
 				anim.play("walk")
 				anim.flip_h = true
+
 
 	velocity.x = current_speed
 
@@ -99,18 +96,33 @@ func handle_vision():
 			player_found = true
 	else :
 		player_found = false
+		
 
 func on_timer_timeout() -> void:
 	if player_found == false:
 		current_state = states.Wander
-	
-	
-func update_health():
-	var healthbar = $healthbar
-	
-	healthbar.value = hp
-	
-	if hp >= 100:
-		healthbar.visible = false
-	else:
-		healthbar.visible = true
+
+func _on_enemyarea_body_entered(body):
+	if body.is_in_group("player"):
+		body.take_damage(10)
+	if body.is_in_group == "player":
+		anim.play("attack")
+
+
+
+
+func _on_attack_delay_timeout():
+	$Timer.start()
+	$Enemyarea/CollisionShape2D.disabled = false
+
+
+func _on_timer_timeout():
+	$Enemyarea/CollisionShape2D.disabled = true
+
+
+func serang(body):
+	pass # Replace with function body.
+
+
+func _serang(body):
+	pass # Replace with function body.
