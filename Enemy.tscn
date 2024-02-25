@@ -168,6 +168,15 @@ animation = &"attack"
 frame = 4
 frame_progress = 1.0
 
+[node name="healthbar" type="ProgressBar" parent="."]
+modulate = Color(0.545098, 0, 0, 1)
+offset_left = -62.0
+offset_top = -132.0
+offset_right = 80.0
+offset_bottom = -105.0
+value = 100.0
+show_percentage = false
+
 [connection signal="body_entered" from="Enemyarea" to="." method="_on_enemyarea_body_entered"]
 [connection signal="timeout" from="attack_delay" to="." method="_on_attack_delay_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

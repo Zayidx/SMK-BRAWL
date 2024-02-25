@@ -32,6 +32,7 @@ func _ready():
 	chase_timer.timeout.connect(on_timer_timeout)
 
 func _physics_process(_delta):
+	update_health()
 	handle_vision()
 	track_player()
 	handle_movement()
@@ -118,3 +119,13 @@ func _on_attack_delay_timeout():
 
 func _on_timer_timeout():
 	$Enemyarea/CollisionShape2D.disabled = true
+
+func update_health():
+	var healthbar = $healthbar
+	
+	healthbar.value = hp
+	
+	if hp >= 100:
+		healthbar.visible = false
+	else:
+		healthbar.visible = true
