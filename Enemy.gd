@@ -118,11 +118,3 @@ func _on_attack_delay_timeout():
 
 func _on_timer_timeout():
 	$Enemyarea/CollisionShape2D.disabled = true
-
-
-func serang(body):
-	pass # Replace with function body.
-
-
-func _serang(body):
-	pass # Replace with function body.
