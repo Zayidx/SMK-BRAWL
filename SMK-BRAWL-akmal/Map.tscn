@@ -25,6 +25,4 @@ position = Vector2(629, 0)
 shape = SubResource("1")
 
 [node name="Enemy" parent="." instance=ExtResource("3")]
-position = Vector2(722, 561)
-
-[connection signal="knockback" from="Player" to="Enemy" method="_on_player_knockback"]
+position = Vector2(727, 509)
