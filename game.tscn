@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3 uid="uid://bm8hmdakep572"]
+
+[ext_resource type="PackedScene" uid="uid://bwhtmk73pbhs7" path="res://scenes/player.tscn" id="1_618ee"]
+[ext_resource type="Texture2D" uid="uid://do52kfvwdussb" path="res://Gambar WhatsApp 2024-02-01 pukul 12.45.48_b98f802d.jpg" id="3_cgb2l"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_5dk63"]
+size = Vector2(1000, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6titv"]
+size = Vector2(2564, 48)
+
+[node name="World" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_618ee")]
+top_level = true
+light_mask = 0
+position = Vector2(598, 439)
+
+[node name="GambarWhatsApp2024-02-01Pukul12_45_48B98f802d" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(573.625, 319.547)
+scale = Vector2(0.905273, 1.01704)
+texture = ExtResource("3_cgb2l")
+
+[node name="BARRIER" type="Node" parent="."]
+
+[node name="Platform3" type="StaticBody2D" parent="BARRIER"]
+position = Vector2(1840, 208)
+rotation = 1.5708
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="BARRIER/Platform3"]
+visible = false
+position = Vector2(1413, 423)
+scale = Vector2(1.535, 0.26)
+mesh = SubResource("QuadMesh_5dk63")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BARRIER/Platform3"]
+position = Vector2(-382.997, 745.001)
+shape = SubResource("RectangleShape2D_6titv")
+debug_color = Color(0, 0.392157, 0.458824, 0)
+
+[node name="Platform2" type="StaticBody2D" parent="BARRIER"]
+position = Vector2(72, 448)
+rotation = 1.5708
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="BARRIER/Platform2"]
+visible = false
+position = Vector2(1413, 423)
+scale = Vector2(1.535, 0.26)
+mesh = SubResource("QuadMesh_5dk63")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BARRIER/Platform2"]
+position = Vector2(-187, 63.0007)
+shape = SubResource("RectangleShape2D_6titv")
+debug_color = Color(0, 0.392157, 0.458824, 0)
+
+[node name="Platform" type="StaticBody2D" parent="BARRIER"]
+position = Vector2(576, 520)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BARRIER/Platform"]
+position = Vector2(596, 104)
+shape = SubResource("RectangleShape2D_6titv")
+debug_color = Color(0, 0.392157, 0.458824, 0)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="BARRIER/Platform"]
+visible = false
+position = Vector2(1413, 423)
+scale = Vector2(1.535, 0.26)
+mesh = SubResource("QuadMesh_5dk63")

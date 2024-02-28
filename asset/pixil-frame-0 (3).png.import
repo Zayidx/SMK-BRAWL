@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cq20p2r1urxvu"
-path="res://.godot/imported/Gambar WhatsApp 2024-02-01 pukul 12.45.48_b98f802d.jpg-5c4783896397a9cb1fa426ed16fb9215.ctex"
+uid="uid://br715375vww37"
+path="res://.godot/imported/pixil-frame-0 (3).png-f3e6c92ee65b1dd4b753a1a3d40d7e5c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Gambar WhatsApp 2024-02-01 pukul 12.45.48_b98f802d.jpg"
-dest_files=["res://.godot/imported/Gambar WhatsApp 2024-02-01 pukul 12.45.48_b98f802d.jpg-5c4783896397a9cb1fa426ed16fb9215.ctex"]
+source_file="res://asset/pixil-frame-0 (3).png"
+dest_files=["res://.godot/imported/pixil-frame-0 (3).png-f3e6c92ee65b1dd4b753a1a3d40d7e5c.ctex"]
 
 [params]
 
