@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://gbmktmkbeit4"]
+
+[ext_resource type="Texture2D" uid="uid://dr5anoyqsx1uk" path="res://asset/Rumah.png" id="1_n4rre"]
+[ext_resource type="PackedScene" uid="uid://d14qiimaxax6x" path="res://Player.tscn" id="2_ivov8"]
+[ext_resource type="Script" path="res://kamar2.gd" id="3_20872"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7y1ub"]
+size = Vector2(1278, 20)
+
+[sub_resource type="GDScript" id="GDScript_lnlvy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xu2wn"]
+size = Vector2(189, 306)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Rumah" type="Sprite2D" parent="."]
+position = Vector2(252, 325)
+scale = Vector2(1.28, 1.60625)
+texture = ExtResource("1_n4rre")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-38, 619)
+collision_layer = 16777215
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(38, -187)
+rotation = -1.57079
+shape = SubResource("RectangleShape2D_7y1ub")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1194, -293)
+rotation = -1.57079
+shape = SubResource("RectangleShape2D_7y1ub")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(643, 14)
+shape = SubResource("RectangleShape2D_7y1ub")
+
+[node name="Player" parent="." instance=ExtResource("2_ivov8")]
+position = Vector2(367, 514)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(843, 411)
+script = SubResource("GDScript_lnlvy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(289, 63)
+shape = SubResource("RectangleShape2D_xu2wn")
+script = ExtResource("3_20872")
