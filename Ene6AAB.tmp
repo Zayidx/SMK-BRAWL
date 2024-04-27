@@ -164,13 +164,17 @@ collision_mask = 3
 [node name="Chase_Timer" type="Timer" parent="."]
 
 [node name="attack_delay" type="Timer" parent="."]
-autostart = true
+wait_time = 0.1
+one_shot = true
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="TimerTakeDamage" type="Timer" parent="."]
 wait_time = 0.3
 one_shot = true
+
+[node name="KnockbackDurationTimer" type="Timer" parent="."]
+wait_time = 0.1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_hlumh")
@@ -196,5 +200,7 @@ offset_bottom = -100.0
 text = "Enemy"
 
 [connection signal="body_entered" from="Enemyarea" to="." method="_on_enemyarea_body_entered"]
+[connection signal="timeout" from="attack_delay" to="." method="_on_attack_delay_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="TimerTakeDamage" to="." method="_on_timer_take_damage_timeout"]
+[connection signal="timeout" from="KnockbackDurationTimer" to="." method="_on_knockback_duration_timer_timeout"]

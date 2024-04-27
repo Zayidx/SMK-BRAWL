@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://s1vsaj8w31q0"]
+
+[ext_resource type="Texture2D" uid="uid://mc75fqc11g3i" path="res://asset/PINTU.png" id="1_5uvxb"]
+[ext_resource type="Script" path="res://Pintu.gd" id="2_38c3w"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Pintu" type="Sprite2D" parent="."]
+position = Vector2(559.5, 340)
+scale = Vector2(0.991, 0.842)
+texture = ExtResource("1_5uvxb")
+script = ExtResource("2_38c3w")

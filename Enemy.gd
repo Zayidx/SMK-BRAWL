@@ -1,4 +1,7 @@
 extends CharacterBody2D
+const NAME = "enemy"
+@export var enemydamage = 500
+var damage = enemydamage / 2500
 @export var gravity = 30
 @export var hp = 100
 var attack = true
@@ -19,6 +22,11 @@ var attack = true
 var current_speed : float  = 0.0
 var player_found : bool = false 
 var player : PlayerEntity = null
+var is_attack_ready = false
+
+var dir = 1
+var knockback_dir
+var knockback
 
 enum states{
 	Wander,
@@ -28,7 +36,7 @@ enum states{
 var current_state = states.Wander
 
 func _ready():
-	anim.play("attack")
+	anim.play("walk")
 	player = get_tree().get_first_node_in_group("player")
 	chase_timer.timeout.connect(on_timer_timeout)
 
@@ -46,9 +54,17 @@ func _physics_process(_delta):
 		velocity.y += gravity
 		if velocity.y > 1500:
 			velocity.y = 500
+	if $attack_delay.time_left == $attack_delay.wait_time:
+		is_attack_ready = true
+	else:
+		is_attack_ready = false 
 	
 func handle_movement() -> void:
-	var direction = global_position - player.global_position
+	var direction = null
+	if player != null && direction == null:
+		direction = global_position - player.global_position
+	else:
+		return
 	
 	if current_state == states.Wander:
 		if floor_raycast_right.is_colliding() != true: 
@@ -76,8 +92,6 @@ func handle_movement() -> void:
 				
 				if is_attacking() == false:
 					anim.play("walk")
-
-
 	velocity.x = current_speed
 
 func track_player():
@@ -86,6 +100,8 @@ func track_player():
 		
 	if global_position.distance_to(player.global_position) < 78 :
 		anim.play("attack")
+		player.take_damage(10)
+		
 		
 	var direction_to_player : Vector2 = Vector2(player.position.x, player.position.y - 8)\
 	- player_tracker_raycast.position
@@ -93,7 +109,19 @@ func track_player():
 	player_tracker_pivot.look_at(direction_to_player)
 
 func _take_damage(damage):
+	if knockback == true:
+		velocity.y = -200
+		velocity.x = 350 
+		knockback = false
+		velocity.x = -current_speed
 	hp -= damage
+	if $TimerTakeDamage.is_stopped():
+		$AnimatedSprite2D.material.set_shader_parameter("opacity", 1.0);
+		$AnimatedSprite2D.material.set_shader_parameter("r", 1.0);
+		$AnimatedSprite2D.material.set_shader_parameter("g", 0);
+		$AnimatedSprite2D.material.set_shader_parameter("b", 0);
+		$AnimatedSprite2D.material.set_shader_parameter("mix_color", 0.7);
+		$TimerTakeDamage.start(0)
 
 func handle_vision():
 	if player_tracker_raycast.is_colliding():
@@ -114,7 +142,7 @@ func on_timer_timeout() -> void:
 		current_state = states.Wander
 
 func _on_enemyarea_body_entered(body):
-	if body.name == "player":
+	if body.is_in_group("player"):
 		body.take_damage(10)
 		anim.play("attack")
 		
@@ -128,7 +156,7 @@ func is_attacking():
 	else:
 		return true
 		print("true")
-		
+
 func update_health():
 	var healthbar = $healthbar
 	
@@ -138,3 +166,21 @@ func update_health():
 		healthbar.visible = false
 	else:
 		healthbar.visible = true
+	
+	if hp == 0:
+		print("kebuka")
+		get_tree().change_scene_to_file("res://win.tscn")
+		
+
+func _on_timer_take_damage_timeout():
+	$TimerTakeDamage.stop()
+	$AnimatedSprite2D.material.set_shader_parameter("opacity", 1.0);
+	$AnimatedSprite2D.material.set_shader_parameter("mix_color", 0)
+
+
+func _on_player_knockback():
+	var player_dir = get_parent().get_node("Player").dir 
+	knockback_dir = player_dir
+	dir = knockback_dir * -1
+	knockback = true
+	

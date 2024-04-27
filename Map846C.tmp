@@ -20,18 +20,8 @@ position = Vector2(519, 501)
 position = Vector2(-38, 619)
 collision_layer = 16777215
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(5, -196)
-rotation = -1.57079
-shape = SubResource("1")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1269, -345)
-rotation = -1.57079
-shape = SubResource("1")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(643, 14)
+position = Vector2(629, 0)
 shape = SubResource("1")
 
 [node name="Enemy" parent="." instance=ExtResource("3")]

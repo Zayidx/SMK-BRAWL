@@ -1,10 +1,19 @@
-[gd_scene load_steps=26 format=3 uid="uid://d14qiimaxax6x"]
+[gd_scene load_steps=28 format=3 uid="uid://d14qiimaxax6x"]
 
 [ext_resource type="Texture2D" uid="uid://c30m7uyr1abl5" path="res://asset/pixil-frame-0 (4).png" id="1"]
 [ext_resource type="Texture2D" uid="uid://dqeaw5bo6xley" path="res://asset/pixil-frame-0 (2).png" id="2"]
+[ext_resource type="Shader" path="res://Player.gdshader" id="2_403es"]
 [ext_resource type="Script" path="res://Player.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://qcknapak2gko" path="res://asset/pixil-frame-0 (5).png" id="4"]
 [ext_resource type="Texture2D" uid="uid://br715375vww37" path="res://asset/pixil-frame-0 (3).png" id="5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jm0sc"]
+shader = ExtResource("2_403es")
+shader_parameter/opacity = 1.0
+shader_parameter/r = 1.0
+shader_parameter/g = null
+shader_parameter/b = null
+shader_parameter/mix_color = null
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7at4p"]
 atlas = ExtResource("2")
@@ -165,6 +174,7 @@ collision_layer = 2
 script = ExtResource("3")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_jm0sc")
 sprite_frames = SubResource("9")
 animation = &"attack"
 
@@ -172,7 +182,7 @@ animation = &"attack"
 position = Vector2(3.5, 11)
 shape = SubResource("10")
 
-[node name="Player" type="Area2D" parent="."]
+[node name="Player" type="Area2D" parent="." groups=["player"]]
 position = Vector2(-25.3333, 0)
 collision_layer = 16777215
 
@@ -181,4 +191,36 @@ position = Vector2(29.6667, 10.6667)
 shape = SubResource("19")
 disabled = true
 
+[node name="healthbar" type="ProgressBar" parent="."]
+modulate = Color(0.317647, 0.890196, 0.27451, 1)
+offset_left = -16.0
+offset_top = -26.0
+offset_right = 28.0
+offset_bottom = -18.0
+max_value = 2500.0
+value = 100.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="."]
+offset_left = -6.66667
+offset_top = -19.3333
+offset_right = 42.3333
+offset_bottom = 6.66667
+scale = Vector2(0.5, 0.5)
+text = "Player"
+
+[node name="TimerTakeDamage" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="regen_timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="playerjump" type="AudioStreamPlayer2D" parent="."]
+
+[node name="runaudio" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="body_entered" from="Player" to="." method="_on_Player_body_entered"]
+[connection signal="timeout" from="TimerTakeDamage" to="." method="_on_timer_take_damage_timeout"]
+[connection signal="timeout" from="regen_timer" to="." method="_on_regen_timer_timeout"]
