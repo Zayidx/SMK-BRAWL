@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://xcvr2i8kk1rf" path="res://Kelas.png" id="1_24itt"]
 [ext_resource type="PackedScene" uid="uid://d14qiimaxax6x" path="res://Player.tscn" id="2_u0fk1"]
 [ext_resource type="Script" path="res://kelas.gd" id="3_lkjxe"]
-[ext_resource type="Texture2D" uid="uid://dgfhdff5k4egu" path="res://asset/MouseKlikKanan.png" id="4_3kfwa"]
 [ext_resource type="Script" path="res://cintiadialog.gd" id="4_jusss"]
 [ext_resource type="Script" path="res://HEROIN.gd" id="6_yokx1"]
+[ext_resource type="Texture2D" uid="uid://dnrx5p46teamo" path="res://asset/Panahbawah.png" id="7_g67dr"]
 [ext_resource type="Texture2D" uid="uid://7k2ga622swgn" path="res://asset/herooin.png" id="7_h17iu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aba5t"]
@@ -53,11 +53,18 @@ texture = ExtResource("1_24itt")
 script = ExtResource("6_yokx1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HEROIN"]
-position = Vector2(952.625, 481)
-scale = Vector2(2.15278, 2.19403)
+position = Vector2(946.247, 469)
+scale = Vector2(2.27663, 2.37313)
 sprite_frames = SubResource("SpriteFrames_vav27")
 animation = &"idle"
 frame_progress = 0.665604
+
+[node name="Button" type="Button" parent="HEROIN"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 912.0
+offset_top = 359.0
+offset_right = 1029.0
+offset_bottom = 640.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-38, 619)
@@ -78,7 +85,7 @@ position = Vector2(649, 38)
 shape = SubResource("RectangleShape2D_7y1ub")
 
 [node name="Player" parent="." instance=ExtResource("2_u0fk1")]
-position = Vector2(371, 444)
+position = Vector2(114, 474)
 scale = Vector2(5, 5)
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -92,7 +99,9 @@ script = ExtResource("4_jusss")
 
 [node name="dialogcintia" type="AudioStreamPlayer2D" parent="."]
 
-[node name="MouseKlikKanan" type="Sprite2D" parent="."]
-position = Vector2(987, 354)
-scale = Vector2(0.121795, 0.1125)
-texture = ExtResource("4_3kfwa")
+[node name="Panahbawah" type="Sprite2D" parent="."]
+position = Vector2(954, 339)
+scale = Vector2(0.228125, 0.2475)
+texture = ExtResource("7_g67dr")
+
+[connection signal="pressed" from="HEROIN/Button" to="HEROIN" method="_on_button_pressed"]

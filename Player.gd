@@ -14,6 +14,7 @@ var knockback_dir= Vector2()
 var knockback_wait = 10
 const UP =Vector2(0,-1)
 
+
 func _physics_process(_delta):
 	
 	print($Player/CollisionShape2D2.disabled)

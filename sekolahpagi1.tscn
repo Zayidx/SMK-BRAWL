@@ -1,12 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://kknxyeu6armb"]
+[gd_scene load_steps=15 format=3 uid="uid://c1adij7hlhl7e"]
 
-[ext_resource type="Script" path="res://sekolahpagii.gd" id="1_meer8"]
 [ext_resource type="Texture2D" uid="uid://bfml5thj4tik4" path="res://asset/SklhPagi.png" id="1_rbhl0"]
 [ext_resource type="PackedScene" uid="uid://d14qiimaxax6x" path="res://Player.tscn" id="2_pmkge"]
+[ext_resource type="Script" path="res://dialogosis.gd" id="3_lb8un"]
+[ext_resource type="Texture2D" uid="uid://dgfhdff5k4egu" path="res://asset/MouseKlikKanan.png" id="4_bpx2l"]
 [ext_resource type="Texture2D" uid="uid://drxkdp4ykt3ng" path="res://asset/KETOSIDLEV2.png" id="5_0k3lr"]
-[ext_resource type="Script" path="res://Ketosii.gd" id="5_hjnq8"]
-[ext_resource type="Texture2D" uid="uid://dnrx5p46teamo" path="res://asset/Panahbawah.png" id="6_h7av2"]
-[ext_resource type="AudioStream" uid="uid://cwvo86jyqt64t" path="res://Backsound/City Traffic Sound Effect with horns and people (320).mp3" id="7_lbp2x"]
+[ext_resource type="Script" path="res://Ketos.gd" id="5_ewq2o"]
+[ext_resource type="Texture2D" uid="uid://bw7y2kus7lq8l" path="res://asset/Dialog1.png" id="7_827nl"]
+[ext_resource type="AudioStream" uid="uid://dy58312vufomf" path="res://Audio conver/Untitled_Project_V1.mp3" id="8_iptu7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cfkof"]
 atlas = ExtResource("5_0k3lr")
@@ -37,28 +38,37 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7y1ub"]
-size = Vector2(1676, 20)
+size = Vector2(1278, 20)
+
+[sub_resource type="GDScript" id="GDScript_lnlvy"]
+script/source = "extends Area2D
+
+
+func _ready():
+	set_process_input(true)
+
+func _input(event):
+	if event.is_action_pressed(\"interact\"):
+		print(\"kebuka\")
+		get_tree().change_scene_to_file(\"res://kelas.tscn\")
+		
+	if event.is_action_pressed(\"back\"):
+		print(\"kebuka\")
+		get_tree().change_scene_to_file(\"res://rumah.tscn\")
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rgxfs"]
+size = Vector2(102, 142)
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_meer8")
 
 [node name="SklhPagi" type="Sprite2D" parent="."]
 position = Vector2(619, 324)
 scale = Vector2(1.22429, 1.61)
 texture = ExtResource("1_rbhl0")
 
-[node name="Player" parent="." instance=ExtResource("2_pmkge")]
-position = Vector2(63, 519)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-limit_left = -230
-limit_top = 1
-limit_right = 1450
-limit_bottom = 640
-editor_draw_limits = true
-
 [node name="Ketos" type="CharacterBody2D" parent="." groups=["NPC"]]
-script = ExtResource("5_hjnq8")
+script = ExtResource("5_ewq2o")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Ketos"]
 position = Vector2(406, 497)
@@ -68,44 +78,55 @@ animation = &"idle"
 frame_progress = 0.440497
 
 [node name="Button" type="Button" parent="Ketos"]
-modulate = Color(1, 1, 1, 0)
-offset_left = 367.0
-offset_top = 442.0
-offset_right = 453.0
-offset_bottom = 606.0
+offset_left = 392.0
+offset_top = 460.0
+offset_right = 435.0
+offset_bottom = 587.0
+
+[node name="Player" parent="." instance=ExtResource("2_pmkge")]
+position = Vector2(333, 522)
+
+[node name="RayCast2D" type="RayCast2D" parent="Player"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-38, 619)
 collision_layer = 16777215
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-152, -191)
+position = Vector2(38, -187)
 rotation = -1.57079
 shape = SubResource("RectangleShape2D_7y1ub")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1489, -307)
+position = Vector2(1194, -293)
 rotation = -1.57079
 shape = SubResource("RectangleShape2D_7y1ub")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(640, 14)
+position = Vector2(643, 14)
 shape = SubResource("RectangleShape2D_7y1ub")
 
-[node name="Button" type="Button" parent="."]
-offset_left = -236.0
-offset_top = -1.0
-offset_right = -153.0
-offset_bottom = 647.0
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(840, 403)
+script = SubResource("GDScript_lnlvy")
 
-[node name="Panahbawah" type="Sprite2D" parent="."]
-position = Vector2(410, 397)
-scale = Vector2(0.228125, 0.2475)
-texture = ExtResource("6_h7av2")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-405, 124)
+shape = SubResource("RectangleShape2D_rgxfs")
+script = ExtResource("3_lb8un")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_lbp2x")
+[node name="MouseKlikKanan" type="Sprite2D" parent="."]
+position = Vector2(459, 376)
+scale = Vector2(0.121795, 0.1125)
+texture = ExtResource("4_bpx2l")
+
+[node name="Dialog1" type="Sprite2D" parent="."]
+position = Vector2(588.5, 312.5)
+scale = Vector2(0.676875, 0.77125)
+texture = ExtResource("7_827nl")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_iptu7")
 autoplay = true
 
 [connection signal="pressed" from="Ketos/Button" to="Ketos" method="_on_button_pressed"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
