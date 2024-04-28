@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Dialogue" load_steps=4 format=3 uid="uid://ctotncrry5h2d"]
+
+[ext_resource type="Script" path="res://Dialogue.gd" id="1_iiuyc"]
+[ext_resource type="Resource" uid="uid://ct3i15qasf5uf" path="res://NPCs/Catman/Dialogues/1.tres" id="1_ja22l"]
+[ext_resource type="Texture2D" uid="uid://0xjq7drfkcde" path="res://asset/th.jpeg" id="2_1ja5o"]
+
+[resource]
+script = ExtResource("1_iiuyc")
+texture = ExtResource("2_1ja5o")
+mame = "Ketos"
+dialogue = "Maaf Dek, Mana topi nya ya?"
+path_option = ""
+options = Array[Resource]([ExtResource("1_ja22l")])

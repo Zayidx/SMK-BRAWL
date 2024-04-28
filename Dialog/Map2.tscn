@@ -1,0 +1,127 @@
+[gd_scene load_steps=14 format=3 uid="uid://k33vd4d675pt"]
+
+[ext_resource type="Texture2D" uid="uid://cah8xktgd3u3k" path="res://asset/SKLHMALEM.png" id="1_u02s1"]
+[ext_resource type="PackedScene" uid="uid://d14qiimaxax6x" path="res://Player.tscn" id="2"]
+[ext_resource type="Texture2D" uid="uid://bex8o3sjku2d0" path="res://asset/NPCIDLEV2.png" id="3_nwhqb"]
+[ext_resource type="Script" path="res://Dialog/CharacterBody2DDDD.gd" id="3_qwi3w"]
+[ext_resource type="Script" path="res://Dialog/CharacterBody2D218.gd" id="4_recdo"]
+[ext_resource type="Script" path="res://Dialog/CharacterBody2DDDDD.gd" id="5_bvfa6"]
+[ext_resource type="Texture2D" uid="uid://basx52vuaqepg" path="res://Dialog Convo/20240428_202207.png" id="5_gc2to"]
+[ext_resource type="FontFile" uid="uid://c7fxqrylps635" path="res://asset/Font/DisposableDroidBB.ttf" id="6_mw222"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(1684, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vwok"]
+atlas = ExtResource("3_nwhqb")
+region = Rect2(210, 0, 51, 134)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6xdw"]
+atlas = ExtResource("3_nwhqb")
+region = Rect2(363, 0, 51, 134)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhika"]
+atlas = ExtResource("3_nwhqb")
+region = Rect2(516, 0, 51, 134)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d6tt8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vwok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6xdw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhika")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Map" type="Node2D"]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(641, 320.25)
+scale = Vector2(1.3025, 1.60375)
+texture = ExtResource("1_u02s1")
+
+[node name="Player" parent="." instance=ExtResource("2")]
+position = Vector2(1107, 498)
+scale = Vector2(3.7, 3.7)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+limit_left = -220
+limit_top = 1
+limit_right = 1500
+limit_bottom = 640
+editor_draw_limits = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-38, 619)
+collision_layer = 16777215
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-156, -192)
+rotation = -1.57079
+shape = SubResource("1")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1527, -369)
+rotation = -1.57079
+shape = SubResource("1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(692, 14)
+shape = SubResource("1")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("3_qwi3w")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(1382.36, 513.375)
+scale = Vector2(1.47613, 1.52799)
+sprite_frames = SubResource("SpriteFrames_d6tt8")
+animation = &"idle"
+frame = 1
+frame_progress = 0.249339
+
+[node name="CharacterBody2D3" type="CharacterBody2D" parent="."]
+script = ExtResource("5_bvfa6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D3"]
+position = Vector2(1234.64, 503.875)
+scale = Vector2(1.71142, 1.65485)
+sprite_frames = SubResource("SpriteFrames_d6tt8")
+animation = &"idle"
+frame = 1
+frame_progress = 0.249339
+
+[node name="20240428202207" type="Sprite2D" parent="."]
+position = Vector2(927, 267)
+scale = Vector2(0.764063, 0.764063)
+texture = ExtResource("5_gc2to")
+
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
+script = ExtResource("4_recdo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D2"]
+position = Vector2(1302.14, 529.375)
+scale = Vector2(1.61338, 1.57276)
+sprite_frames = SubResource("SpriteFrames_d6tt8")
+animation = &"idle"
+frame = 1
+frame_progress = 0.249339
+
+[node name="Button" type="Button" parent="CharacterBody2D2"]
+offset_left = 1228.0
+offset_top = 122.0
+offset_right = 1376.0
+offset_bottom = 152.0
+theme_override_fonts/font = ExtResource("6_mw222")
+theme_override_font_sizes/font_size = 22
+text = "NEXT"
+
+[connection signal="pressed" from="CharacterBody2D2/Button" to="CharacterBody2D2" method="_on_button_pressed"]

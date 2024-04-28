@@ -1,0 +1,124 @@
+[gd_scene load_steps=13 format=3 uid="uid://c1k2850r135lj"]
+
+[ext_resource type="Texture2D" uid="uid://cah8xktgd3u3k" path="res://asset/SKLHMALEM.png" id="1_u02s1"]
+[ext_resource type="PackedScene" uid="uid://d14qiimaxax6x" path="res://Player.tscn" id="2"]
+[ext_resource type="Script" path="res://Dialog/CharacterBody2Dd.gd" id="3_c6md5"]
+[ext_resource type="Texture2D" uid="uid://bex8o3sjku2d0" path="res://asset/NPCIDLEV2.png" id="3_nwhqb"]
+[ext_resource type="Script" path="res://Dialog/CharacterBody2D217.gd" id="4_tfxyv"]
+[ext_resource type="Script" path="res://Dialog/CharacterBody2Ddd.gd" id="6_ie8rq"]
+[ext_resource type="Texture2D" uid="uid://deqjwm283kf5i" path="res://asset/Panahkanan1.png" id="7_t7mne"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(1684, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vwok"]
+atlas = ExtResource("3_nwhqb")
+region = Rect2(210, 0, 51, 134)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6xdw"]
+atlas = ExtResource("3_nwhqb")
+region = Rect2(363, 0, 51, 134)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhika"]
+atlas = ExtResource("3_nwhqb")
+region = Rect2(516, 0, 51, 134)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d6tt8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vwok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6xdw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhika")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Map" type="Node2D"]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(641, 320.25)
+scale = Vector2(1.3025, 1.60375)
+texture = ExtResource("1_u02s1")
+
+[node name="Player" parent="." instance=ExtResource("2")]
+position = Vector2(511, 489)
+scale = Vector2(3.7, 3.7)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+limit_left = -220
+limit_top = 1
+limit_right = 1500
+limit_bottom = 640
+editor_draw_limits = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-38, 619)
+collision_layer = 16777215
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-156, -192)
+rotation = -1.57079
+shape = SubResource("1")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1527, -369)
+rotation = -1.57079
+shape = SubResource("1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(692, 14)
+shape = SubResource("1")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("3_c6md5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(1386.86, 499.893)
+scale = Vector2(1.6526, 1.72922)
+sprite_frames = SubResource("SpriteFrames_d6tt8")
+animation = &"idle"
+frame = 1
+frame_progress = 0.249339
+
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
+script = ExtResource("4_tfxyv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D2"]
+position = Vector2(1299.14, 513.394)
+scale = Vector2(1.73103, 1.81129)
+sprite_frames = SubResource("SpriteFrames_d6tt8")
+animation = &"idle"
+frame = 1
+frame_progress = 0.249339
+
+[node name="Button" type="Button" parent="CharacterBody2D2"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 1199.0
+offset_top = 473.0
+offset_right = 1419.0
+offset_bottom = 625.0
+
+[node name="CharacterBody2D3" type="CharacterBody2D" parent="."]
+script = ExtResource("6_ie8rq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D3"]
+position = Vector2(1233.14, 490.645)
+scale = Vector2(1.77024, 1.85232)
+sprite_frames = SubResource("SpriteFrames_d6tt8")
+animation = &"idle"
+frame = 1
+frame_progress = 0.249339
+
+[node name="Panahkanan1" type="Sprite2D" parent="."]
+position = Vector2(799, 367)
+scale = Vector2(0.229375, 0.2075)
+texture = ExtResource("7_t7mne")
+
+[connection signal="pressed" from="CharacterBody2D2/Button" to="CharacterBody2D2" method="_on_button_pressed"]
