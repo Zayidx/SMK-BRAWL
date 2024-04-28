@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bo46o3nrb0ojs"
+path="res://.godot/imported/cyntia_nanya_V7.mp3-9ae4bad439fd3a70522fd112c38e332e.mp3str"
+
+[deps]
+
+source_file="res://Audio conver/cyntia_nanya_V7.mp3"
+dest_files=["res://.godot/imported/cyntia_nanya_V7.mp3-9ae4bad439fd3a70522fd112c38e332e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cjhqgixhxr80d"
+path="res://.godot/imported/bird sound effect morning copyright free forest _ no copyright stuff (320).mp3-1329d1de8d7c479252888a28a28fa8e6.mp3str"
+
+[deps]
+
+source_file="res://Backsound/bird sound effect morning copyright free forest _ no copyright stuff (320).mp3"
+dest_files=["res://.godot/imported/bird sound effect morning copyright free forest _ no copyright stuff (320).mp3-1329d1de8d7c479252888a28a28fa8e6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

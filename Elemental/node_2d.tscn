@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://de1vp5otgegpd"]
+
+[ext_resource type="Script" path="res://Control.gd" id="1_ieatl"]
+[ext_resource type="Texture2D" uid="uid://bw7y2kus7lq8l" path="res://asset/Dialog1.png" id="2_cg237"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ieatl")
+
+[node name="Button" type="Button" parent="Control"]
+offset_left = 46.0
+offset_top = 265.0
+offset_right = 1551.0
+offset_bottom = 336.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+offset_right = 1600.0
+offset_bottom = 800.0
+texture = ExtResource("2_cg237")
+
+[connection signal="pressed" from="Control/Button" to="Control" method="_on_button_pressed"]
