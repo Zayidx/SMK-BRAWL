@@ -7,29 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://drxkdp4ykt3ng" path="res://asset/KETOSIDLEV2.png" id="5_0k3lr"]
 [ext_resource type="Script" path="res://Ketos.gd" id="5_ewq2o"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7y1ub"]
-size = Vector2(1278, 20)
-
-[sub_resource type="GDScript" id="GDScript_lnlvy"]
-script/source = "extends Area2D
-
-
-func _ready():
-	set_process_input(true)
-
-func _input(event):
-	if event.is_action_pressed(\"interact\"):
-		print(\"kebuka\")
-		get_tree().change_scene_to_file(\"res://kelas.tscn\")
-		
-	if event.is_action_pressed(\"back\"):
-		print(\"kebuka\")
-		get_tree().change_scene_to_file(\"res://rumah.tscn\")
-"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rgxfs"]
-size = Vector2(102, 142)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_cfkof"]
 atlas = ExtResource("5_0k3lr")
 region = Rect2(206, 0, 103, 134)
@@ -58,12 +35,49 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7y1ub"]
+size = Vector2(1278, 20)
+
+[sub_resource type="GDScript" id="GDScript_lnlvy"]
+script/source = "extends Area2D
+
+
+func _ready():
+	set_process_input(true)
+
+func _input(event):
+	if event.is_action_pressed(\"interact\"):
+		print(\"kebuka\")
+		get_tree().change_scene_to_file(\"res://kelas.tscn\")
+		
+	if event.is_action_pressed(\"back\"):
+		print(\"kebuka\")
+		get_tree().change_scene_to_file(\"res://rumah.tscn\")
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rgxfs"]
+size = Vector2(102, 142)
+
 [node name="Node2D" type="Node2D"]
 
 [node name="SklhPagi" type="Sprite2D" parent="."]
 position = Vector2(619, 324)
 scale = Vector2(1.22429, 1.61)
 texture = ExtResource("1_rbhl0")
+
+[node name="Ketos" type="CharacterBody2D" parent="."]
+script = ExtResource("5_ewq2o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Ketos"]
+position = Vector2(406, 497)
+scale = Vector2(1.42284, 1.48881)
+sprite_frames = SubResource("SpriteFrames_keagy")
+animation = &"idle"
+frame_progress = 0.440497
+
+[node name="Player" parent="." instance=ExtResource("2_pmkge")]
+position = Vector2(63, 506)
+scale = Vector2(3, 3)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-38, 619)
@@ -83,9 +97,6 @@ shape = SubResource("RectangleShape2D_7y1ub")
 position = Vector2(643, 14)
 shape = SubResource("RectangleShape2D_7y1ub")
 
-[node name="Player" parent="." instance=ExtResource("2_pmkge")]
-position = Vector2(63, 506)
-
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(840, 403)
 script = SubResource("GDScript_lnlvy")
@@ -104,13 +115,3 @@ attenuation = 1.46409
 position = Vector2(459, 376)
 scale = Vector2(0.121795, 0.1125)
 texture = ExtResource("4_bpx2l")
-
-[node name="Ketos" type="CharacterBody2D" parent="."]
-script = ExtResource("5_ewq2o")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Ketos"]
-position = Vector2(406, 497)
-scale = Vector2(1.42284, 1.48881)
-sprite_frames = SubResource("SpriteFrames_keagy")
-animation = &"idle"
-frame_progress = 0.440497

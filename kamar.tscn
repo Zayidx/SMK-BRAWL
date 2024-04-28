@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ji7r"]
 size = Vector2(1278, 20)
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D2" type="Node2D"]
 
 [node name="Pixil-frame-0(17)" type="Sprite2D" parent="."]
 position = Vector2(580.5, 316.5)
@@ -33,7 +33,7 @@ position = Vector2(643, 14)
 shape = SubResource("RectangleShape2D_6ji7r")
 
 [node name="Node2D" parent="." instance=ExtResource("3_kfw5f")]
-position = Vector2(550, 116)
+position = Vector2(661, 83)
 scale = Vector2(0.905877, 0.718726)
 
 [node name="Player" parent="." instance=ExtResource("2_yh0ym")]

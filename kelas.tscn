@@ -8,12 +8,6 @@
 [ext_resource type="Script" path="res://HEROIN.gd" id="6_yokx1"]
 [ext_resource type="Texture2D" uid="uid://7k2ga622swgn" path="res://asset/herooin.png" id="7_h17iu"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7y1ub"]
-size = Vector2(1278, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sab35"]
-size = Vector2(238, 271)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_aba5t"]
 atlas = ExtResource("7_h17iu")
 region = Rect2(206, 0, 103, 134)
@@ -42,12 +36,28 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7y1ub"]
+size = Vector2(1278, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sab35"]
+size = Vector2(238, 271)
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Kelas" type="Sprite2D" parent="."]
 position = Vector2(576, 358)
 scale = Vector2(0.7325, 0.9075)
 texture = ExtResource("1_24itt")
+
+[node name="HEROIN" type="CharacterBody2D" parent="."]
+script = ExtResource("6_yokx1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HEROIN"]
+position = Vector2(952.625, 481)
+scale = Vector2(2.15278, 2.19403)
+sprite_frames = SubResource("SpriteFrames_vav27")
+animation = &"idle"
+frame_progress = 0.665604
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-38, 619)
@@ -86,13 +96,3 @@ script = ExtResource("4_jusss")
 position = Vector2(987, 354)
 scale = Vector2(0.121795, 0.1125)
 texture = ExtResource("4_3kfwa")
-
-[node name="HEROIN" type="CharacterBody2D" parent="."]
-script = ExtResource("6_yokx1")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HEROIN"]
-position = Vector2(952.625, 481)
-scale = Vector2(2.15278, 2.19403)
-sprite_frames = SubResource("SpriteFrames_vav27")
-animation = &"idle"
-frame_progress = 0.665604
