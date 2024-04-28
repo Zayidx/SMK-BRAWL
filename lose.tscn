@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://b2f7ovunra2ht"]
+
+[ext_resource type="Texture2D" uid="uid://bs3ywht2sg7vd" path="res://asset/20240228_102355.png" id="1_rvejq"]
+[ext_resource type="Texture2D" uid="uid://cu8jot7bgiip6" path="res://asset/20240313_152304.png" id="1_vr5gm"]
+[ext_resource type="Script" path="res://Restart.gd" id="3_uu6ar"]
+[ext_resource type="Script" path="res://Quit.gd" id="4_mdwti"]
+[ext_resource type="Texture2D" uid="uid://bfml5thj4tik4" path="res://asset/SklhPagi.png" id="5_578ut"]
+[ext_resource type="Texture2D" uid="uid://cgxko5v31je2n" path="res://asset/20240313_154041.png" id="6_iius7"]
+
+[node name="TestScene" type="Node2D"]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="20240313152304" type="Sprite2D" parent="UI"]
+position = Vector2(586, 366)
+scale = Vector2(0.2868, 0.237604)
+texture = ExtResource("1_vr5gm")
+
+[node name="20240228102355" type="Sprite2D" parent="UI"]
+position = Vector2(587, 488)
+scale = Vector2(0.25, 0.225781)
+texture = ExtResource("1_rvejq")
+
+[node name="MainMenu" type="VBoxContainer" parent="UI"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(100, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.0
+offset_top = -7.0
+offset_right = -35.0
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.92233, 3.24341)
+size_flags_horizontal = 4
+size_flags_vertical = 2
+
+[node name="Restart" type="Button" parent="UI/MainMenu"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Restart"
+script = ExtResource("3_uu6ar")
+
+[node name="Quit" type="Button" parent="UI/MainMenu"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Quit"
+script = ExtResource("4_mdwti")
+
+[node name="SklhPagi" type="Sprite2D" parent="."]
+modulate = Color(0.411765, 0.411765, 0.411765, 0.996078)
+position = Vector2(568, 213)
+scale = Vector2(1.77339, 2.275)
+texture = ExtResource("5_578ut")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="20240313154041" type="Sprite2D" parent="."]
+position = Vector2(576, 174)
+texture = ExtResource("6_iius7")
+
+[connection signal="pressed" from="UI/MainMenu/Restart" to="UI/MainMenu/Restart" method="_on_pressed"]
+[connection signal="pressed" from="UI/MainMenu/Quit" to="UI/MainMenu/Quit" method="_on_pressed"]

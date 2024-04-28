@@ -1,0 +1,79 @@
+[gd_scene load_steps=7 format=3 uid="uid://gbmktmkbeit4"]
+
+[ext_resource type="Script" path="res://rumah1.gd" id="1_lhkxj"]
+[ext_resource type="Texture2D" uid="uid://dr5anoyqsx1uk" path="res://asset/Rumah.png" id="1_n4rre"]
+[ext_resource type="PackedScene" uid="uid://d14qiimaxax6x" path="res://Player.tscn" id="2_ivov8"]
+[ext_resource type="Texture2D" uid="uid://deqjwm283kf5i" path="res://asset/Panahkanan1.png" id="4_0fao8"]
+[ext_resource type="AudioStream" uid="uid://cjhqgixhxr80d" path="res://Backsound/bird sound effect morning copyright free forest _ no copyright stuff (320).mp3" id="5_l2017"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7y1ub"]
+size = Vector2(1801, 20)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_lhkxj")
+
+[node name="Rumah" type="Sprite2D" parent="."]
+position = Vector2(252, 325)
+scale = Vector2(1.28, 1.60625)
+texture = ExtResource("1_n4rre")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-38, 619)
+collision_layer = 16777215
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-512, -183)
+rotation = -1.57079
+shape = SubResource("RectangleShape2D_7y1ub")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1194, -293)
+rotation = -1.57079
+shape = SubResource("RectangleShape2D_7y1ub")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(381.5, 14)
+shape = SubResource("RectangleShape2D_7y1ub")
+
+[node name="Player" parent="." instance=ExtResource("2_ivov8")]
+position = Vector2(-240, 519)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(119, -58.3333)
+scale = Vector2(0.333333, 0.333333)
+limit_left = -600
+limit_top = 1
+limit_right = 1150
+limit_bottom = 640
+editor_draw_limits = true
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Button" type="Button" parent="."]
+offset_left = 1060.0
+offset_top = 19.0
+offset_right = 1144.0
+offset_bottom = 643.0
+
+[node name="Panahkanan1" type="Sprite2D" parent="."]
+position = Vector2(842, 386)
+scale = Vector2(0.308125, 0.325625)
+texture = ExtResource("4_0fao8")
+
+[node name="Panahkanan2" type="Sprite2D" parent="."]
+position = Vector2(-170, 362)
+scale = Vector2(0.308125, 0.325625)
+texture = ExtResource("4_0fao8")
+
+[node name="Button2" type="Button" parent="."]
+offset_left = -352.0
+offset_top = 460.0
+offset_right = -286.0
+offset_bottom = 582.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_l2017")
+autoplay = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

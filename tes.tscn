@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpnptwewvrtbo"]
+
+[ext_resource type="Texture2D" uid="uid://bbalvjd547fw4" path="res://asset/20240427_145056.jpg" id="1_gvbaj"]
+[ext_resource type="Script" path="res://tes.gd" id="1_qc4wm"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_qc4wm")
+
+[node name="20240427145056" type="Sprite2D" parent="."]
+position = Vector2(582, 318)
+scale = Vector2(0.920313, 0.863889)
+texture = ExtResource("1_gvbaj")
+
+[node name="Startp" type="Button" parent="20240427145056"]
+custom_minimum_size = Vector2(100, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -730.187
+offset_top = -262.765
+offset_right = -550.187
+offset_bottom = -184.765
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "PRESS TO CONTINUE"
+
+[connection signal="pressed" from="20240427145056/Startp" to="." method="_on_startp_pressed"]

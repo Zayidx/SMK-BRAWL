@@ -1,0 +1,183 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmxxttioaxpax"]
+
+[ext_resource type="Script" path="res://Options.gd" id="1_1cimt"]
+[ext_resource type="Script" path="res://Video.gd" id="1_ugeyq"]
+[ext_resource type="Script" path="res://Audio.gd" id="2_s7aiq"]
+[ext_resource type="Script" path="res://Quit.gd" id="2_s8w8m"]
+[ext_resource type="Script" path="res://Back.gd" id="4_j3i3r"]
+
+[node name="TestScene" type="Node2D"]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="MainMenu" type="VBoxContainer" parent="UI"]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -50.5
+offset_right = 35.0
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start" type="Button" parent="UI/MainMenu"]
+layout_mode = 2
+text = "Start"
+
+[node name="Options" type="Button" parent="UI/MainMenu"]
+layout_mode = 2
+text = "Options"
+script = ExtResource("1_1cimt")
+
+[node name="Quit" type="Button" parent="UI/MainMenu"]
+layout_mode = 2
+text = "Quit"
+script = ExtResource("2_s8w8m")
+
+[node name="Settings" type="TabContainer" parent="UI"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Video" type="TabBar" parent="UI/Settings"]
+layout_mode = 2
+script = ExtResource("1_ugeyq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Settings/Video"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.5
+offset_top = -38.5
+offset_right = 64.5
+offset_bottom = 38.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Settings/Video/HBoxContainer"]
+layout_mode = 2
+
+[node name="FullScreen" type="Label" parent="UI/Settings/Video/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "FullSCreen"
+
+[node name="Borderless" type="Label" parent="UI/Settings/Video/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Borderless"
+
+[node name="Vsync" type="Label" parent="UI/Settings/Video/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Vsync"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UI/Settings/Video/HBoxContainer"]
+layout_mode = 2
+
+[node name="Fullscreen" type="CheckBox" parent="UI/Settings/Video/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Borderless" type="CheckBox" parent="UI/Settings/Video/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Vsync" type="OptionButton" parent="UI/Settings/Video/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+item_count = 4
+selected = 1
+popup/item_0/text = "Disable"
+popup/item_0/id = 0
+popup/item_1/text = "Enable"
+popup/item_1/id = 1
+popup/item_2/text = "Adaptive"
+popup/item_2/id = 2
+popup/item_3/text = "Mailbox"
+popup/item_3/id = 3
+
+[node name="Back" type="Button" parent="UI/Settings/Video"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -114.0
+offset_top = -59.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Back"
+script = ExtResource("4_j3i3r")
+
+[node name="Audio" type="TabBar" parent="UI/Settings"]
+visible = false
+layout_mode = 2
+script = ExtResource("2_s7aiq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Settings/Audio"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29.5
+offset_top = -38.5
+offset_right = 29.5
+offset_bottom = 38.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Settings/Audio/HBoxContainer"]
+layout_mode = 2
+
+[node name="Master" type="Label" parent="UI/Settings/Audio/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Master"
+
+[node name="Music" type="Label" parent="UI/Settings/Audio/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Music"
+
+[node name="SFX" type="Label" parent="UI/Settings/Audio/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "SFX"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UI/Settings/Audio/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Master" type="HSlider" parent="UI/Settings/Audio/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 6
+max_value = 1.0
+step = 0.05
+
+[node name="Music" type="HSlider" parent="UI/Settings/Audio/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 6
+max_value = 1.0
+step = 0.05
+
+[node name="SFX" type="HSlider" parent="UI/Settings/Audio/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 6
+max_value = 1.0
+step = 0.05
+
+[connection signal="pressed" from="UI/MainMenu/Options" to="UI/MainMenu/Options" method="_on_pressed"]
+[connection signal="pressed" from="UI/MainMenu/Quit" to="UI/MainMenu/Quit" method="_on_pressed"]
+[connection signal="toggled" from="UI/Settings/Video/HBoxContainer/VBoxContainer2/Fullscreen" to="UI/Settings/Video" method="_on_fullscreen_toggled"]
+[connection signal="toggled" from="UI/Settings/Video/HBoxContainer/VBoxContainer2/Borderless" to="UI/Settings/Video" method="_on_borderless_toggled"]
+[connection signal="item_selected" from="UI/Settings/Video/HBoxContainer/VBoxContainer2/Vsync" to="UI/Settings/Video" method="_on_vsync_item_selected"]
+[connection signal="pressed" from="UI/Settings/Video/Back" to="UI/MainMenu/Options" method="_on_back_pressed"]
+[connection signal="value_changed" from="UI/Settings/Audio/HBoxContainer/VBoxContainer2/Master" to="UI/Settings/Audio" method="_on_master_value_changed"]
+[connection signal="value_changed" from="UI/Settings/Audio/HBoxContainer/VBoxContainer2/Music" to="UI/Settings/Audio" method="_on_music_value_changed"]
+[connection signal="value_changed" from="UI/Settings/Audio/HBoxContainer/VBoxContainer2/SFX" to="UI/Settings/Audio" method="_on_sfx_value_changed"]
