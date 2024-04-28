@@ -1,0 +1,133 @@
+[gd_scene load_steps=15 format=3 uid="uid://7bchno42upo4"]
+
+[ext_resource type="Texture2D" uid="uid://bfml5thj4tik4" path="res://asset/SklhPagi.png" id="1_rbhl0"]
+[ext_resource type="PackedScene" uid="uid://d14qiimaxax6x" path="res://Player.tscn" id="2_pmkge"]
+[ext_resource type="Script" path="res://dialogosis.gd" id="3_lb8un"]
+[ext_resource type="Texture2D" uid="uid://dgfhdff5k4egu" path="res://asset/MouseKlikKanan.png" id="4_bpx2l"]
+[ext_resource type="Texture2D" uid="uid://drxkdp4ykt3ng" path="res://asset/KETOSIDLEV2.png" id="5_0k3lr"]
+[ext_resource type="Texture2D" uid="uid://bnrvqoecyyeyo" path="res://Dialog Convo/20240428_201249.png" id="5_p7tda"]
+[ext_resource type="AudioStream" uid="uid://xp72hjuktoif" path="res://Audio conver/Untitled_Project_V3.mp3" id="6_f6dii"]
+[ext_resource type="Script" path="res://Dialog/CharacterBody2D3.gd" id="7_rqf0k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7y1ub"]
+size = Vector2(1278, 20)
+
+[sub_resource type="GDScript" id="GDScript_lnlvy"]
+script/source = "extends Area2D
+
+
+func _ready():
+	set_process_input(true)
+
+func _input(event):
+	if event.is_action_pressed(\"interact\"):
+		print(\"kebuka\")
+		get_tree().change_scene_to_file(\"res://kelas.tscn\")
+		
+	if event.is_action_pressed(\"back\"):
+		print(\"kebuka\")
+		get_tree().change_scene_to_file(\"res://rumah.tscn\")
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rgxfs"]
+size = Vector2(102, 142)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfkof"]
+atlas = ExtResource("5_0k3lr")
+region = Rect2(206, 0, 103, 134)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ct3n0"]
+atlas = ExtResource("5_0k3lr")
+region = Rect2(515, 0, 103, 134)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_keagy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfkof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ct3n0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfkof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ct3n0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="SklhPagi" type="Sprite2D" parent="."]
+position = Vector2(619, 324)
+scale = Vector2(1.22429, 1.61)
+texture = ExtResource("1_rbhl0")
+
+[node name="Player" parent="." instance=ExtResource("2_pmkge")]
+position = Vector2(334, 520)
+
+[node name="RayCast2D" type="RayCast2D" parent="Player"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-38, 619)
+collision_layer = 16777215
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(38, -187)
+rotation = -1.57079
+shape = SubResource("RectangleShape2D_7y1ub")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1194, -293)
+rotation = -1.57079
+shape = SubResource("RectangleShape2D_7y1ub")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(643, 14)
+shape = SubResource("RectangleShape2D_7y1ub")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(840, 403)
+script = SubResource("GDScript_lnlvy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-405, 124)
+shape = SubResource("RectangleShape2D_rgxfs")
+script = ExtResource("3_lb8un")
+
+[node name="MouseKlikKanan" type="Sprite2D" parent="."]
+position = Vector2(459, 376)
+scale = Vector2(0.121795, 0.1125)
+texture = ExtResource("4_bpx2l")
+
+[node name="Dialog2" type="Sprite2D" parent="."]
+position = Vector2(580, 316.5)
+scale = Vector2(0.874, 0.989)
+texture = ExtResource("5_p7tda")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_f6dii")
+autoplay = true
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("7_rqf0k")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(406, 497)
+scale = Vector2(1.42284, 1.48881)
+sprite_frames = SubResource("SpriteFrames_keagy")
+animation = &"idle"
+frame_progress = 0.440497
+
+[node name="Button" type="Button" parent="CharacterBody2D"]
+offset_left = 900.0
+offset_top = 141.0
+offset_right = 1085.0
+offset_bottom = 174.0
+text = "NEXT"
+
+[connection signal="pressed" from="CharacterBody2D/Button" to="CharacterBody2D" method="_on_button_pressed"]

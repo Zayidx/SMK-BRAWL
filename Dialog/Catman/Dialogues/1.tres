@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Dialogue" load_steps=3 format=3 uid="uid://ct3i15qasf5uf"]
+
+[ext_resource type="Script" path="res://Dialogue.gd" id="1_y16vt"]
+[ext_resource type="Texture2D" uid="uid://b5fr27mh6gg7k" path="res://asset/th (1).jpeg" id="2_66h2t"]
+
+[resource]
+script = ExtResource("1_y16vt")
+texture = ExtResource("2_66h2t")
+mame = "Cat Man"
+dialogue = "Di rumah ka, Ketinggalan"
+path_option = "Can I Help you?"
+options = Array[Resource]([])

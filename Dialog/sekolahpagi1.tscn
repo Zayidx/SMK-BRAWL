@@ -1,0 +1,149 @@
+[gd_scene load_steps=17 format=3 uid="uid://bna4e1rhucofb"]
+
+[ext_resource type="Texture2D" uid="uid://bfml5thj4tik4" path="res://asset/SklhPagi.png" id="1_rbhl0"]
+[ext_resource type="Script" path="res://Dialog/sekolahpagi1.gd" id="1_wivcg"]
+[ext_resource type="PackedScene" uid="uid://d14qiimaxax6x" path="res://Player.tscn" id="2_pmkge"]
+[ext_resource type="Script" path="res://dialogosis.gd" id="3_lb8un"]
+[ext_resource type="Texture2D" uid="uid://dgfhdff5k4egu" path="res://asset/MouseKlikKanan.png" id="4_bpx2l"]
+[ext_resource type="Texture2D" uid="uid://drxkdp4ykt3ng" path="res://asset/KETOSIDLEV2.png" id="5_0k3lr"]
+[ext_resource type="AudioStream" uid="uid://dy58312vufomf" path="res://Audio conver/Untitled_Project_V1.mp3" id="6_ned4i"]
+[ext_resource type="Script" path="res://Dialog/CharacterBody2D.gd" id="8_a7pkl"]
+[ext_resource type="Texture2D" uid="uid://pkq3v18edju8" path="res://Dialog Convo/20240428_192934.png" id="9_oyi1h"]
+[ext_resource type="FontFile" uid="uid://c7fxqrylps635" path="res://asset/Font/DisposableDroidBB.ttf" id="10_u115l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7y1ub"]
+size = Vector2(1278, 20)
+
+[sub_resource type="GDScript" id="GDScript_lnlvy"]
+script/source = "extends Area2D
+
+
+func _ready():
+	set_process_input(true)
+
+func _input(event):
+	if event.is_action_pressed(\"interact\"):
+		print(\"kebuka\")
+		get_tree().change_scene_to_file(\"res://kelas.tscn\")
+		
+	if event.is_action_pressed(\"back\"):
+		print(\"kebuka\")
+		get_tree().change_scene_to_file(\"res://rumah.tscn\")
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rgxfs"]
+size = Vector2(102, 142)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfkof"]
+atlas = ExtResource("5_0k3lr")
+region = Rect2(206, 0, 103, 134)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ct3n0"]
+atlas = ExtResource("5_0k3lr")
+region = Rect2(515, 0, 103, 134)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j3iuy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfkof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ct3n0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfkof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ct3n0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_wivcg")
+
+[node name="SklhPagi" type="Sprite2D" parent="."]
+position = Vector2(619, 324)
+scale = Vector2(1.22429, 1.61)
+texture = ExtResource("1_rbhl0")
+
+[node name="Player" parent="." instance=ExtResource("2_pmkge")]
+position = Vector2(336, 520)
+
+[node name="RayCast2D" type="RayCast2D" parent="Player"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-38, 619)
+collision_layer = 16777215
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(38, -187)
+rotation = -1.57079
+shape = SubResource("RectangleShape2D_7y1ub")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1194, -293)
+rotation = -1.57079
+shape = SubResource("RectangleShape2D_7y1ub")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(643, 14)
+shape = SubResource("RectangleShape2D_7y1ub")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(840, 403)
+script = SubResource("GDScript_lnlvy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-405, 124)
+shape = SubResource("RectangleShape2D_rgxfs")
+script = ExtResource("3_lb8un")
+
+[node name="scenetopi" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(831, 494)
+stream = ExtResource("6_ned4i")
+autoplay = true
+max_distance = 500.0
+attenuation = 1.46409
+
+[node name="MouseKlikKanan" type="Sprite2D" parent="."]
+position = Vector2(459, 376)
+scale = Vector2(0.121795, 0.1125)
+texture = ExtResource("4_bpx2l")
+
+[node name="Dialog1" type="Sprite2D" parent="."]
+position = Vector2(580, 316.5)
+scale = Vector2(0.859375, 0.989062)
+texture = ExtResource("9_oyi1h")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("8_a7pkl")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(406, 497)
+scale = Vector2(1.42284, 1.48881)
+sprite_frames = SubResource("SpriteFrames_j3iuy")
+animation = &"idle"
+frame = 2
+frame_progress = 0.00841036
+
+[node name="Button" type="Button" parent="CharacterBody2D"]
+offset_left = 887.0
+offset_top = 142.0
+offset_right = 1072.0
+offset_bottom = 173.0
+theme_override_fonts/font = ExtResource("10_u115l")
+theme_override_font_sizes/font_size = 22
+text = "NEXT"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 788.0
+offset_top = -151.0
+offset_right = 973.0
+offset_bottom = -118.0
+text = "NEXT"
+
+[connection signal="pressed" from="CharacterBody2D/Button" to="CharacterBody2D" method="_on_button_pressed"]
