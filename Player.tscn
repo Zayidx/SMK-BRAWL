@@ -176,7 +176,7 @@ script = ExtResource("3")
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_jm0sc")
 sprite_frames = SubResource("9")
-animation = &"attack"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
 position = Vector2(3.5, 11)
@@ -216,6 +216,10 @@ one_shot = true
 [node name="regen_timer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
+
+[node name="playerjump" type="AudioStreamPlayer2D" parent="."]
+
+[node name="runaudio" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="body_entered" from="Player" to="." method="_on_Player_body_entered"]
 [connection signal="timeout" from="TimerTakeDamage" to="." method="_on_timer_take_damage_timeout"]

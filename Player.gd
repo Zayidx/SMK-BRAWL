@@ -14,7 +14,9 @@ var knockback_dir= Vector2()
 var knockback_wait = 10
 const UP =Vector2(0,-1)
 
+
 func _physics_process(_delta):
+	
 	print($Player/CollisionShape2D2.disabled)
 	velocity.x = 0
 	if hp <= 0:
@@ -26,6 +28,9 @@ func _physics_process(_delta):
 			
 	if Input.is_action_just_pressed("jump") && is_on_floor() && !is_attacking():
 		velocity.y = -jump_force
+		var audiostream = ResourceLoader.load("res://Backsound/jump.mp3")
+		$playerjump.stream = audiostream
+		$playerjump.play()
 	elif Input.is_action_pressed("move_left") && !is_attacking():	
 		anim.play("Run")
 		anim.flip_h = true
@@ -36,6 +41,7 @@ func _physics_process(_delta):
 		velocity.x = speed
 		anim.flip_h = false
 		dir = 1
+		
 	
 	elif is_on_floor() :
 		if(!is_attacking()):
@@ -56,6 +62,7 @@ func _physics_process(_delta):
 			emit_signal("knockback") 
 			knockback_wait = 10
 	knockback_wait -= 1
+	
 	
 	
 	update_health()
@@ -104,6 +111,9 @@ func update_health():
 		healthbar.visible = true
 	else:
 		healthbar.visible = true
+	if hp == 0:
+		print("kebuka")
+		get_tree().change_scene_to_file("res://lose.tscn")
 
 
 func _on_timer_take_damage_timeout():
@@ -119,3 +129,5 @@ func _on_regen_timer_timeout():
 			hp = 2500
 	if hp == 0:
 		hp = 0
+		
+

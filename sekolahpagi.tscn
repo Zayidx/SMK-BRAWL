@@ -1,0 +1,111 @@
+[gd_scene load_steps=12 format=3 uid="uid://kknxyeu6armb"]
+
+[ext_resource type="Script" path="res://sekolahpagii.gd" id="1_meer8"]
+[ext_resource type="Texture2D" uid="uid://bfml5thj4tik4" path="res://asset/SklhPagi.png" id="1_rbhl0"]
+[ext_resource type="PackedScene" uid="uid://d14qiimaxax6x" path="res://Player.tscn" id="2_pmkge"]
+[ext_resource type="Texture2D" uid="uid://drxkdp4ykt3ng" path="res://asset/KETOSIDLEV2.png" id="5_0k3lr"]
+[ext_resource type="Script" path="res://Ketosii.gd" id="5_hjnq8"]
+[ext_resource type="Texture2D" uid="uid://dnrx5p46teamo" path="res://asset/Panahbawah.png" id="6_h7av2"]
+[ext_resource type="AudioStream" uid="uid://cwvo86jyqt64t" path="res://Backsound/City Traffic Sound Effect with horns and people (320).mp3" id="7_lbp2x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfkof"]
+atlas = ExtResource("5_0k3lr")
+region = Rect2(206, 0, 103, 134)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ct3n0"]
+atlas = ExtResource("5_0k3lr")
+region = Rect2(515, 0, 103, 134)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_keagy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfkof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ct3n0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfkof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ct3n0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7y1ub"]
+size = Vector2(1676, 20)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_meer8")
+
+[node name="SklhPagi" type="Sprite2D" parent="."]
+position = Vector2(619, 324)
+scale = Vector2(1.22429, 1.61)
+texture = ExtResource("1_rbhl0")
+
+[node name="Player" parent="." instance=ExtResource("2_pmkge")]
+position = Vector2(63, 519)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+limit_left = -230
+limit_top = 1
+limit_right = 1450
+limit_bottom = 640
+editor_draw_limits = true
+
+[node name="Ketos" type="CharacterBody2D" parent="." groups=["NPC"]]
+script = ExtResource("5_hjnq8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Ketos"]
+position = Vector2(406, 497)
+scale = Vector2(1.42284, 1.48881)
+sprite_frames = SubResource("SpriteFrames_keagy")
+animation = &"idle"
+frame_progress = 0.440497
+
+[node name="Button" type="Button" parent="Ketos"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 367.0
+offset_top = 442.0
+offset_right = 453.0
+offset_bottom = 606.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-38, 619)
+collision_layer = 16777215
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-152, -191)
+rotation = -1.57079
+shape = SubResource("RectangleShape2D_7y1ub")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1489, -307)
+rotation = -1.57079
+shape = SubResource("RectangleShape2D_7y1ub")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(640, 14)
+shape = SubResource("RectangleShape2D_7y1ub")
+
+[node name="Button" type="Button" parent="."]
+offset_left = -236.0
+offset_top = -1.0
+offset_right = -153.0
+offset_bottom = 647.0
+
+[node name="Panahbawah" type="Sprite2D" parent="."]
+position = Vector2(410, 397)
+scale = Vector2(0.228125, 0.2475)
+texture = ExtResource("6_h7av2")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_lbp2x")
+autoplay = true
+
+[connection signal="pressed" from="Ketos/Button" to="Ketos" method="_on_button_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

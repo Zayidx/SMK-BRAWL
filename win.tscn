@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://doknc3eubewg8"]
+
+[ext_resource type="VideoStream" path="res://credit.ogv" id="6_ih2h4"]
+
+[node name="TestScene" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_right = 1920.0
+offset_bottom = 1088.0
+scale = Vector2(0.600355, 0.590998)
+stream = ExtResource("6_ih2h4")
+autoplay = true

@@ -1,0 +1,107 @@
+[gd_scene load_steps=13 format=3 uid="uid://dfvsh0i54eofs"]
+
+[ext_resource type="Texture2D" uid="uid://xcvr2i8kk1rf" path="res://Kelas.png" id="1_24itt"]
+[ext_resource type="PackedScene" uid="uid://d14qiimaxax6x" path="res://Player.tscn" id="2_u0fk1"]
+[ext_resource type="Script" path="res://kelas.gd" id="3_lkjxe"]
+[ext_resource type="Script" path="res://cintiadialog.gd" id="4_jusss"]
+[ext_resource type="Script" path="res://HEROIN.gd" id="6_yokx1"]
+[ext_resource type="Texture2D" uid="uid://dnrx5p46teamo" path="res://asset/Panahbawah.png" id="7_g67dr"]
+[ext_resource type="Texture2D" uid="uid://7k2ga622swgn" path="res://asset/herooin.png" id="7_h17iu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aba5t"]
+atlas = ExtResource("7_h17iu")
+region = Rect2(206, 0, 103, 134)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qixr"]
+atlas = ExtResource("7_h17iu")
+region = Rect2(515, 0, 103, 134)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vav27"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aba5t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qixr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aba5t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qixr")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7y1ub"]
+size = Vector2(1278, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sab35"]
+size = Vector2(238, 271)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Kelas" type="Sprite2D" parent="."]
+position = Vector2(576, 358)
+scale = Vector2(0.7325, 0.9075)
+texture = ExtResource("1_24itt")
+
+[node name="HEROIN" type="CharacterBody2D" parent="."]
+script = ExtResource("6_yokx1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HEROIN"]
+position = Vector2(946.247, 469)
+scale = Vector2(2.27663, 2.37313)
+sprite_frames = SubResource("SpriteFrames_vav27")
+animation = &"idle"
+frame_progress = 0.665604
+
+[node name="Button" type="Button" parent="HEROIN"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 912.0
+offset_top = 359.0
+offset_right = 1029.0
+offset_bottom = 640.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-38, 619)
+collision_layer = 16777215
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(38, -187)
+rotation = -1.57079
+shape = SubResource("RectangleShape2D_7y1ub")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1194, -293)
+rotation = -1.57079
+shape = SubResource("RectangleShape2D_7y1ub")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(649, 38)
+shape = SubResource("RectangleShape2D_7y1ub")
+
+[node name="Player" parent="." instance=ExtResource("2_u0fk1")]
+position = Vector2(114, 474)
+scale = Vector2(5, 5)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(843, 411)
+script = ExtResource("3_lkjxe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-707, -247)
+shape = SubResource("RectangleShape2D_sab35")
+script = ExtResource("4_jusss")
+
+[node name="dialogcintia" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Panahbawah" type="Sprite2D" parent="."]
+position = Vector2(954, 339)
+scale = Vector2(0.228125, 0.2475)
+texture = ExtResource("7_g67dr")
+
+[connection signal="pressed" from="HEROIN/Button" to="HEROIN" method="_on_button_pressed"]

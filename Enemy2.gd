@@ -169,7 +169,7 @@ func update_health():
 	
 	if hp == 0:
 		print("kebuka")
-		get_tree().change_scene_to_file("res://win.tscn")
+		
 		
 
 func _on_timer_take_damage_timeout():

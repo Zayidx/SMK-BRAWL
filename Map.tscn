@@ -1,30 +1,62 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdm5udg7ge07a"]
+[gd_scene load_steps=7 format=3 uid="uid://cdm5udg7ge07a"]
 
-[ext_resource type="Texture2D" uid="uid://cq20p2r1urxvu" path="res://Gambar WhatsApp 2024-02-01 pukul 12.45.48_b98f802d.jpg" id="1"]
+[ext_resource type="Texture2D" uid="uid://cah8xktgd3u3k" path="res://asset/SKLHMALEM.png" id="1_u02s1"]
 [ext_resource type="PackedScene" uid="uid://d14qiimaxax6x" path="res://Player.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://ccl0g8iq7clbg" path="res://Enemy.tscn" id="3"]
+[ext_resource type="Script" path="res://Enemy2.gd" id="3_8ogxe"]
+[ext_resource type="Script" path="res://Enemy3.gd" id="5_4vsob"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(1278, 20)
+size = Vector2(1684, 20)
 
 [node name="Map" type="Node2D"]
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(598, 321)
-texture = ExtResource("1")
+position = Vector2(641, 320.25)
+scale = Vector2(1.3025, 1.60375)
+texture = ExtResource("1_u02s1")
+
+[node name="Enemy" parent="." instance=ExtResource("3")]
+position = Vector2(719, 573)
+scale = Vector2(1.3, 1.3)
+
+[node name="Enemy2" parent="." instance=ExtResource("3")]
+position = Vector2(1344, 573)
+scale = Vector2(1.3, 1.3)
+script = ExtResource("3_8ogxe")
 
 [node name="Player" parent="." instance=ExtResource("2")]
-position = Vector2(519, 501)
+position = Vector2(1134, 490)
+scale = Vector2(3.7, 3.7)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+limit_left = -220
+limit_top = 1
+limit_right = 1500
+limit_bottom = 640
+editor_draw_limits = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-38, 619)
 collision_layer = 16777215
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(629, 0)
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-156, -192)
+rotation = -1.57079
 shape = SubResource("1")
 
-[node name="Enemy" parent="." instance=ExtResource("3")]
-position = Vector2(722, 561)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1527, -369)
+rotation = -1.57079
+shape = SubResource("1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(692, 14)
+shape = SubResource("1")
+
+[node name="Enemy3" parent="." instance=ExtResource("3")]
+position = Vector2(986, 575)
+scale = Vector2(1.3, 1.3)
+script = ExtResource("5_4vsob")
 
 [connection signal="knockback" from="Player" to="Enemy" method="_on_player_knockback"]
