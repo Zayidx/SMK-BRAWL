@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d2tgb76xqwl8d"
+path="res://.godot/imported/Night ambience  Sound Effect  Free Music Royalty.mp3-b77c46e269d7ad73132cb7ca071ee082.mp3str"
+
+[deps]
+
+source_file="res://Backsound/Night ambience  Sound Effect  Free Music Royalty.mp3"
+dest_files=["res://.godot/imported/Night ambience  Sound Effect  Free Music Royalty.mp3-b77c46e269d7ad73132cb7ca071ee082.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
