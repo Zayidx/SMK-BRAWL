@@ -37,7 +37,7 @@ var current_state = states.Wander
 
 func _ready():
 	anim.play("walk")
-	player = get_tree().get_first_node_in_group("player1")
+	player = get_tree().get_first_node_in_group("player")
 	chase_timer.timeout.connect(on_timer_timeout)
 
 func _physics_process(_delta):
@@ -167,6 +167,10 @@ func update_health():
 	else:
 		healthbar.visible = true
 	
+	if hp == 0:
+		print("kebuka")
+		get_tree().change_scene_to_file("res://Dialog/tes3.tscn")
+		
 
 func _on_timer_take_damage_timeout():
 	$TimerTakeDamage.stop()

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://drxkdp4ykt3ng" path="res://asset/KETOSIDLEV2.png" id="5_0k3lr"]
 [ext_resource type="Script" path="res://Ketosii.gd" id="5_hjnq8"]
 [ext_resource type="Texture2D" uid="uid://dnrx5p46teamo" path="res://asset/Panahbawah.png" id="6_h7av2"]
-[ext_resource type="AudioStream" uid="uid://cwvo86jyqt64t" path="res://Backsound/City Traffic Sound Effect with horns and people (320).mp3" id="7_lbp2x"]
+[ext_resource type="AudioStream" uid="uid://cjhqgixhxr80d" path="res://Backsound/bird sound effect morning copyright free forest _ no copyright stuff (320).mp3" id="7_5tcs2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cfkof"]
 atlas = ExtResource("5_0k3lr")
@@ -104,7 +104,7 @@ scale = Vector2(0.228125, 0.2475)
 texture = ExtResource("6_h7av2")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_lbp2x")
+stream = ExtResource("7_5tcs2")
 autoplay = true
 
 [connection signal="pressed" from="Ketos/Button" to="Ketos" method="_on_button_pressed"]

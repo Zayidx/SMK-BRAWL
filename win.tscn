@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://doknc3eubewg8"]
+[gd_scene load_steps=3 format=3 uid="uid://doknc3eubewg8"]
 
+[ext_resource type="Script" path="res://win.gd" id="1_ysekf"]
 [ext_resource type="VideoStream" path="res://credit.ogv" id="6_ih2h4"]
 
 [node name="TestScene" type="Node2D"]
+script = ExtResource("1_ysekf")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

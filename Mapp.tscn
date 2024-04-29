@@ -1,17 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://cdm5udg7ge07a"]
+[gd_scene load_steps=7 format=3 uid="uid://dceti0qv5ev5t"]
 
-[ext_resource type="Script" path="res://Map.gd" id="1_axd17"]
 [ext_resource type="Texture2D" uid="uid://cah8xktgd3u3k" path="res://asset/SKLHMALEM.png" id="1_u02s1"]
 [ext_resource type="PackedScene" uid="uid://d14qiimaxax6x" path="res://Player.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://ccl0g8iq7clbg" path="res://Enemy.tscn" id="3"]
 [ext_resource type="Script" path="res://Elemental/Enemy2.gd" id="4_lyth1"]
-[ext_resource type="Script" path="res://Elemental/Enemy1.gd" id="5_ohy58"]
+[ext_resource type="Script" path="res://Enemy6.gd" id="7_ksv54"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(1727, 20)
 
 [node name="Map" type="Node2D"]
-script = ExtResource("1_axd17")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(639, 320.25)
@@ -19,7 +17,7 @@ scale = Vector2(1.28143, 1.604)
 texture = ExtResource("1_u02s1")
 
 [node name="Player" parent="." instance=ExtResource("2")]
-position = Vector2(1216, 491)
+position = Vector2(136, 513)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_left = -220
@@ -47,14 +45,15 @@ position = Vector2(696.5, 14)
 shape = SubResource("1")
 
 [node name="Enemy" parent="." instance=ExtResource("3")]
-position = Vector2(1407, 584)
+position = Vector2(-50, 579)
 
 [node name="Enemy2" parent="." instance=ExtResource("3")]
-position = Vector2(1115, 576)
+position = Vector2(368, 580)
 script = ExtResource("4_lyth1")
 
 [node name="Enemy3" parent="." instance=ExtResource("3")]
-position = Vector2(785, 588)
-script = ExtResource("5_ohy58")
+position = Vector2(1065, 586)
+script = ExtResource("7_ksv54")
 
-[connection signal="knockback" from="Player" to="Enemy" method="_on_player_knockback"]
+[node name="Enemy4" parent="." instance=ExtResource("3")]
+position = Vector2(702, 580)

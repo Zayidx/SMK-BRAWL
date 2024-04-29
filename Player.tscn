@@ -176,7 +176,9 @@ script = ExtResource("3")
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_jm0sc")
 sprite_frames = SubResource("9")
-animation = &"idle"
+animation = &"Run"
+frame = 1
+frame_progress = 0.809595
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
 position = Vector2(3.5, 11)
