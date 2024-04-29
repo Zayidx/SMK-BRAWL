@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsbf52ty5cx3d"]
+
+[ext_resource type="Script" path="res://Dialog/tes3.gd" id="1_x0fjr"]
+[ext_resource type="Texture2D" uid="uid://ru3e4i7slp83" path="res://Dialog Convo/20240429_140908.png" id="2_7gyq8"]
+[ext_resource type="AudioStream" uid="uid://ggghwo4jy88b" path="res://Backsound/Running sound effects , shoes on road sound effects , footsteps.mp3" id="3_akyqq"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_x0fjr")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(29.2664, 16.6112)
+color = Color(0, 0, 0, 1)
+
+[node name="20240427145056" type="Sprite2D" parent="."]
+position = Vector2(600, 218)
+scale = Vector2(0.451953, 0.448611)
+texture = ExtResource("2_7gyq8")
+
+[node name="Startp" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 502.0
+offset_top = 403.0
+offset_right = 682.0
+offset_bottom = 481.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "PRESS TO CONTINUE"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_akyqq")
+autoplay = true
+
+[connection signal="pressed" from="Startp" to="." method="_on_startp_pressed"]

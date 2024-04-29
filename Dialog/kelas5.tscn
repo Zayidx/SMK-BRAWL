@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://mqs5cpkvujga"]
+[gd_scene load_steps=15 format=3 uid="uid://mqs5cpkvujga"]
 
 [ext_resource type="Texture2D" uid="uid://xcvr2i8kk1rf" path="res://Kelas.png" id="1_24itt"]
+[ext_resource type="Script" path="res://Dialog/kelas5.gd" id="1_oobxf"]
 [ext_resource type="PackedScene" uid="uid://d14qiimaxax6x" path="res://Player.tscn" id="2_u0fk1"]
 [ext_resource type="Script" path="res://kelas.gd" id="3_lkjxe"]
 [ext_resource type="Script" path="res://cintiadialog.gd" id="4_jusss"]
@@ -44,6 +45,7 @@ animations = [{
 }]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_oobxf")
 
 [node name="Kelas" type="Sprite2D" parent="."]
 position = Vector2(576, 358)

@@ -1,6 +1,7 @@
 extends Node2D
 
-
+func _physics_process(delta):
+	AudioPlayer2.stop()
 
 
 func _on_startp_pressed():

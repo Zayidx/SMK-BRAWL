@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://c1k2850r135lj"]
+[gd_scene load_steps=14 format=3 uid="uid://c1k2850r135lj"]
 
 [ext_resource type="Texture2D" uid="uid://cah8xktgd3u3k" path="res://asset/SKLHMALEM.png" id="1_u02s1"]
+[ext_resource type="Script" path="res://Dialog/Map1.gd" id="1_yg87b"]
 [ext_resource type="PackedScene" uid="uid://d14qiimaxax6x" path="res://Player.tscn" id="2"]
 [ext_resource type="Script" path="res://Dialog/CharacterBody2Dd.gd" id="3_c6md5"]
 [ext_resource type="Texture2D" uid="uid://bex8o3sjku2d0" path="res://asset/NPCIDLEV2.png" id="3_nwhqb"]
@@ -41,6 +42,7 @@ animations = [{
 }]
 
 [node name="Map" type="Node2D"]
+script = ExtResource("1_yg87b")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(641, 320.25)

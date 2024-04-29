@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://dxarrudis00"]
+
+[ext_resource type="Script" path="res://Dialog/kamar4.gd" id="1_asjxr"]
+[ext_resource type="Texture2D" uid="uid://drmwl0segiv1t" path="res://asset/pixil-frame-0 (17).png" id="1_w780k"]
+[ext_resource type="PackedScene" uid="uid://d14qiimaxax6x" path="res://Player.tscn" id="2_yh0ym"]
+[ext_resource type="Texture2D" uid="uid://deqjwm283kf5i" path="res://asset/Panahkanan1.png" id="4_peyb1"]
+[ext_resource type="Texture2D" uid="uid://d05tgs01n7h3x" path="res://asset/pintu1.png" id="5_fbh1o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ji7r"]
+size = Vector2(1278, 20)
+
+[node name="Node2D2" type="Node2D"]
+script = ExtResource("1_asjxr")
+
+[node name="Pixil-frame-0(17)" type="Sprite2D" parent="."]
+position = Vector2(580.5, 316.5)
+scale = Vector2(0.779724, 0.586111)
+texture = ExtResource("1_w780k")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-38, 619)
+collision_layer = 16777215
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(38, -187)
+rotation = -1.57079
+shape = SubResource("RectangleShape2D_6ji7r")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1194, -293)
+rotation = -1.57079
+shape = SubResource("RectangleShape2D_6ji7r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(643, 14)
+shape = SubResource("RectangleShape2D_6ji7r")
+
+[node name="Player" parent="." instance=ExtResource("2_yh0ym")]
+position = Vector2(504, 365)
+scale = Vector2(7, 7)
+
+[node name="Panahkanan1" type="Sprite2D" parent="."]
+position = Vector2(978, 169)
+scale = Vector2(0.329375, 0.3275)
+texture = ExtResource("4_peyb1")
+
+[node name="Pintu1" type="Sprite2D" parent="."]
+position = Vector2(1103, 358)
+scale = Vector2(0.670156, 0.6925)
+texture = ExtResource("5_fbh1o")
+
+[node name="Button" type="Button" parent="."]
+offset_left = -16.0
+offset_top = 486.0
+offset_right = 497.0
+offset_bottom = 601.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
