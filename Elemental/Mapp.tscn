@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://kqtxvlhlcsx0"]
+
+[ext_resource type="Texture2D" uid="uid://cq20p2r1urxvu" path="res://Gambar WhatsApp 2024-02-01 pukul 12.45.48_b98f802d.jpg" id="1"]
+[ext_resource type="PackedScene" uid="uid://d14qiimaxax6x" path="res://Player.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://ccl0g8iq7clbg" path="res://Enemy.tscn" id="3"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(1278, 20)
+
+[node name="Map" type="Node2D"]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(598, 321)
+texture = ExtResource("1")
+
+[node name="Player" parent="." instance=ExtResource("2")]
+position = Vector2(519, 501)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-38, 619)
+collision_layer = 16777215
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(629, 0)
+shape = SubResource("1")
+
+[node name="Enemy" parent="." instance=ExtResource("3")]
+position = Vector2(722, 561)
+
+[connection signal="knockback" from="Player" to="Enemy" method="_on_player_knockback"]
