@@ -1,4 +1,5 @@
 class_name PlayerEntity
+
 extends CharacterBody2D
 @export var knockbackStrength = 800
 var dir = 1

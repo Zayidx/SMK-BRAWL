@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3xdqwcp8453j"]
+[gd_scene load_steps=6 format=3 uid="uid://c3xdqwcp8453j"]
 
 [ext_resource type="Texture2D" uid="uid://drmwl0segiv1t" path="res://asset/pixil-frame-0 (17).png" id="1_w780k"]
 [ext_resource type="PackedScene" uid="uid://d14qiimaxax6x" path="res://Player.tscn" id="2_yh0ym"]
 [ext_resource type="PackedScene" uid="uid://cbhbgoacoc10r" path="res://door.tscn" id="3_kfw5f"]
+[ext_resource type="Texture2D" uid="uid://deqjwm283kf5i" path="res://asset/Panahkanan1.png" id="4_peyb1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ji7r"]
 size = Vector2(1278, 20)
@@ -39,3 +40,8 @@ scale = Vector2(0.905877, 0.718726)
 [node name="Player" parent="." instance=ExtResource("2_yh0ym")]
 position = Vector2(504, 365)
 scale = Vector2(7, 7)
+
+[node name="Panahkanan1" type="Sprite2D" parent="."]
+position = Vector2(978, 169)
+scale = Vector2(0.329375, 0.3275)
+texture = ExtResource("4_peyb1")
